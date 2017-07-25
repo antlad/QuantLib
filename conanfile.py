@@ -20,13 +20,13 @@ class QuantLibConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     version = get_version()
     exports = "CMakeLists.txt", "cmake/*", "ql/*", "Examples/*", "test-suite/*", "*.TXT", "README.md"
-    requires = "Boost/1.60.0@lasote/stable"
+    requires = "Boost/1.62.0@lasote/stable"
     generators = "cmake"
     license = 'http://quantlib.org/license.shtml'
     url = 'http://quantlib.org/index.shtml'
 
-    options = {"examples": [True, False], "tests": [True, False]}    
-    default_options = "examples=False", "tests=False"
+    options = {"examples": [True, False], "tests": [True, False], "shared": [True, False]}    
+    default_options = "examples=False", "tests=False, shared=True"
 
     def build(self):
         cmake = CMake(self.settings)
